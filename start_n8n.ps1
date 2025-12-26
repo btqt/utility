@@ -51,20 +51,20 @@ Write-Host ''
 $n8nCmd = Get-Command n8n -ErrorAction SilentlyContinue
 if ($n8nCmd) {
     & $n8nCmd.Source
-    Read-Host 'Nhấn Enter để đóng'
+    Read-Host 'Press Enter to close'
     exit 0
 }
 
-Write-Host '[WARN] Không tìm thấy lệnh "n8n" trong PATH. Dùng npx để chạy n8n...'
-Write-Host '[HINT] Muốn start nhanh hơn: npm i -g n8n'
+Write-Host '[WARN] Could not find "n8n" command in PATH. Using npx to run n8n...'
+Write-Host '[HINT] For faster start: npm i -g n8n'
 
 $npxCmd = Get-Command npx -ErrorAction SilentlyContinue
 if (-not $npxCmd) {
-    Write-Host '[ERROR] Không tìm thấy "npx". Bạn cần cài Node.js (npm/npx) trước.'
-    Read-Host 'Nhấn Enter để thoát'
+    Write-Host '[ERROR] Could not find "npx". You need to install Node.js (npm/npx) first.'
+    Read-Host 'Press Enter to exit'
     exit 1
 }
 
 & $npxCmd.Source -y n8n
 
-Read-Host 'Nhấn Enter để đóng'
+Read-Host 'Press Enter to close'

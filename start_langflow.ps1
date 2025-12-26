@@ -33,7 +33,7 @@ $VenvActivate = ''
 
 # Tắt telemetry/analytics (nếu Langflow hoặc dependencies có dùng cơ chế này)
 $env:DO_NOT_TRACK = 'true'
-Write-Host "[INFO] DO_NOT_TRACK=$env:DO_NOT_TRACK (chỉ áp dụng cho phiên hiện tại)"
+Write-Host "[INFO] DO_NOT_TRACK=$env:DO_NOT_TRACK (only for current session)"
 
 # ==============================================================
 # 3) Khuyến nghị: KHÔNG hard-code API keys trong file .ps1
@@ -49,15 +49,15 @@ Write-Host "[INFO] DO_NOT_TRACK=$env:DO_NOT_TRACK (chỉ áp dụng cho phiên h
 if ($VenvActivate -and (Test-Path -LiteralPath $VenvActivate)) {
     try {
         . $VenvActivate
-        Write-Host "[INFO] Đã kích hoạt venv: $VenvActivate"
+        Write-Host "[INFO] Activated venv: $VenvActivate"
     }
     catch {
-        Write-Host "[WARN] Không thể kích hoạt venv: $VenvActivate"
+        Write-Host "[WARN] Could not activate venv: $VenvActivate"
         Write-Host "[WARN] $($_.Exception.Message)"
     }
 }
 elseif ($VenvActivate) {
-    Write-Host "[WARN] Không tìm thấy venv activate: $VenvActivate"
+    Write-Host "[WARN] Could not find venv activate script: $VenvActivate"
 }
 
 # ==============================================================
@@ -77,8 +77,8 @@ New-Item -ItemType Directory -Force -Path $env:LANGFLOW_CONFIG_DIR | Out-Null
 #     exit 1
 # }
 
-Write-Host '[INFO] Langflow đang khởi động...'
-Write-Host "[INFO] Dữ liệu lưu tại: $env:LANGFLOW_CONFIG_DIR"
+Write-Host '[INFO] Langflow is starting...'
+Write-Host "[INFO] Data directory: $env:LANGFLOW_CONFIG_DIR"
 Write-Host "[INFO] URL: http://$env:LANGFLOW_HOST`:$env:LANGFLOW_PORT/"
 
 # ==============================================================
@@ -86,4 +86,4 @@ Write-Host "[INFO] URL: http://$env:LANGFLOW_HOST`:$env:LANGFLOW_PORT/"
 # ==============================================================
 langflow run --host $env:LANGFLOW_HOST --port $env:LANGFLOW_PORT
 
-Read-Host 'Nhấn Enter để đóng'
+Read-Host 'Press Enter to close'
