@@ -22,6 +22,10 @@ $env:LANGFLOW_HOST = '127.0.0.1'
 # LANGFLOW_PORT: Cổng server Langflow sẽ lắng nghe.
 $env:LANGFLOW_PORT = '7860'
 
+# LANGFLOW_SAVE_DB_IN_CONFIG_DIR: Lưu database của Langflow trong LANGFLOW_CONFIG_DIR.
+# Giá trị thường dùng: 'true' hoặc 'false'.
+$env:LANGFLOW_SAVE_DB_IN_CONFIG_DIR = 'true'
+
 # (TUỲ CHỌN) Đường dẫn tới activate của Python venv.
 # - Để trống nếu bạn cài Langflow global hoặc tự activate venv trước.
 $VenvActivate = ''
@@ -79,6 +83,7 @@ New-Item -ItemType Directory -Force -Path $env:LANGFLOW_CONFIG_DIR | Out-Null
 
 Write-Host '[INFO] Langflow is starting...'
 Write-Host "[INFO] Data directory: $env:LANGFLOW_CONFIG_DIR"
+Write-Host "[INFO] LANGFLOW_SAVE_DB_IN_CONFIG_DIR: $env:LANGFLOW_SAVE_DB_IN_CONFIG_DIR"
 Write-Host "[INFO] URL: http://$env:LANGFLOW_HOST`:$env:LANGFLOW_PORT/"
 
 # ==============================================================
