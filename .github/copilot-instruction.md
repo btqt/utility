@@ -1,0 +1,4 @@
+- **Source Code Management**: Whenever generating new code files or scripts, ALWAYS create and save them in the `tmp_script` directory to avoid cluttering the root directory. This directory will be created automatically if it does not exist.
+- **Reports and Output**: Whenever generating report files, analysis documents, output files, or output from scripts, ALWAYS write/save them in the `tmp_output` directory. This directory will be created automatically if it does not exist.
+- **Python Environment**: When you need to run Python code or use Python-related tools, prioritize checking for and using the `.venv` virtual environment in the current workspace (e.g., use the direct path `./.venv/Scripts/python.exe` on Windows instead of the system's global `python` command).
+  - **UV Framework**: If the workspace uses the `uv` framework (detected via `uv.lock` or `pyproject.toml` with uv configuration), prioritize using the uv run command over other methods.
