@@ -54,3 +54,8 @@
 - **ALWAYS** respond, explain, and communicate in Vietnamese.
 
 ---
+
+## 7. Instruction Compliance
+
+- **BEFORE** performing any file creation or modification, **ALWAYS** identify and read applicable instruction files (e.g., `*.instructions.md`) located in `.github/instructions/` or the project root.
+- Strictly follow the constraints (language, coding standards, etc.) defined in those instructions for the specific file types involved.
